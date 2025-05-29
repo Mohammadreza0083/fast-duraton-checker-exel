@@ -1,74 +1,65 @@
-# Fast Duration Checker
+# 🎥 Fast Duration Checker Excel
 
-A powerful tool designed to help educational institutions and course planners manage their course schedules efficiently. This script provides a seamless way to organize course durations and generate well-structured Excel reports.
+A simple Python tool to scan video course folders, extract video durations using ffprobe, and generate an interactive Excel workbook to track your course progress.
 
-## 🌟 Features
-- 📊 Excel-based output for easy data manipulation
-- 🎯 Simple and intuitive course duration checking
-- 📈 Organized course planning and management
-- 🔄 Quick and efficient data processing
-- 📱 User-friendly interface
+## ✨ Features
+- 🔍 Scans all video files (.mp4, .mkv, .mov, .avi, .webm) inside a folder and its subfolders
+- 📁 Groups videos by their folder (considered as Section) and lists each video as a Subsection
+- ⏱️ Extracts video durations automatically
+- 📊 Generates an Excel file with:
+  - ✅ A checklist column (0/1) to mark watched videos
+  - 🎨 Conditional formatting that colors completed sections green and incomplete sections red
+  - 📈 Calculates and displays:
+    - Progress percentage per section
+    - Time watched and remaining per section (in minutes and formatted hours:minutes)
+    - Total course progress and time remaining
+  - 🔒 Data validation for the watched column to allow only 0 or 1
+  - 📐 Well formatted with bold headers, borders, and column width adjustments
 
-## 🛠️ Requirements
+## 🛠️ Installation
+Make sure you have these installed:
 - Python 3.x
-- openpyxl package
-
-## 📦 Installation
-1. Clone this repository:
-```bash
-git clone https://github.com/yourusername/fast-duration-checker.git
-```
-
-2. Install the required package:
+- ffprobe (part of FFmpeg) — must be accessible from your system PATH
+- Python packages:
 ```bash
 pip install openpyxl
 ```
 
-## 🚀 How to Use
-1. **Setup**
-   - Ensure you have Python installed on your system
-   - Install the required openpyxl package
+## 🚀 Usage
+1. Place your course folder (with subfolders as sections and videos inside) in any directory
+2. Run the script inside the root folder or specify the path in the code
+3. The script will generate an Excel file named `course_progress.xlsx` with all the details
+4. Open the Excel file and mark videos you have watched by changing 0 to 1 in the "Watched (0/1)" column
+5. The progress and time calculations update automatically
 
-2. **Running the Script**
-   - Open your terminal/command prompt
-   - Navigate to the project directory
-   - Run the script using Python:
-   ```bash
-   python main.py
-   ```
+## ⚙️ How it works
+- Uses ffprobe to get the duration of each video file
+- Collects data in tuples of (section, video, duration)
+- Creates an Excel sheet listing all sections and subsections with durations
+- Adds formulas to compute progress percentages and time summaries
+- Applies conditional formatting to visually distinguish completed and incomplete sections
 
-3. **Input Process**
-   - Enter your course information when prompted
-   - Follow the on-screen instructions
-   - The script will process your input automatically
-
-4. **Output**
-   - The script generates an Excel file with your course data
-   - The Excel file will be saved in the same directory
-   - You can open and modify the Excel file as needed
-
-## 📝 Example
-```python
-# Sample usage
-python main.py
-# Follow the prompts to enter course information
-# An Excel file will be generated with your course data
+## 📁 Example folder structure
+```
+CourseRootFolder/
+├── Section 1/
+│   ├── lesson1.mp4
+│   ├── lesson2.mp4
+├── Section 2/
+│   ├── part1.mkv
+│   ├── part2.mkv
 ```
 
-## 🤝 Contributing
-Feel free to contribute to this project by:
-- Reporting bugs
-- Suggesting enhancements
-- Submitting pull requests
+## 📋 Requirements
+- Python 3.x
+- FFmpeg with ffprobe
+- Python packages: openpyxl
 
 ## 👨‍💻 Developer
 - **Mohammadreza Bonyadi**
 
 ## 📄 License
-This project is licensed under the MIT License - see the LICENSE file for details.
-
-## 📞 Support
-If you encounter any issues or have questions, please open an issue in the repository.
+MIT License
 
 ---
 Made with ❤️ by Mohammadreza Bonyadi
